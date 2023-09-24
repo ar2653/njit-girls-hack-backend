@@ -39,7 +39,7 @@ router.post("/book", async (req, res) => {
 });
 
 router.get("/bookings", async (req, res) => {
-  const { cosmic_handle } = req.body;
+  const { cosmic_handle } = req.query;
   try {
     const appointment = await Appointment.find({ cosmic_handle });
     if (!appointment) {
