@@ -1,16 +1,17 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const cors = require("cors");
-const port = 4000;
 const mongoose = require("mongoose");
 const authenticationRouter = require('./routes/auth');
 const appointmentRouter = require('./routes/appointment');
 const planetsRouter = require('./routes/planets');
 
+const port = process.env.PORT || 4000;
+
 // Allow cross origin requests from frontend application
 app.use(cors());
-
 
 // Logger for all the api calls
 app.use((req, res, next) => {
@@ -35,8 +36,6 @@ app.get("/", (req, res) => {
 app.get("/name", (req, res, next) => {
   res.send("Welcome to Knowhere!!!");
 });
-
-
 
 // connect to mongodb
 const uri = "mongodb+srv://ar2653:dz85E5ldzszsyqul@cluster0.e1j46i3.mongodb.net/?retryWrites=true&w=majority";
