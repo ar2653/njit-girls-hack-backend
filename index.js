@@ -9,6 +9,9 @@ const appointmentRouter = require('./routes/appointment');
 const planetsRouter = require('./routes/planets');
 
 const port = process.env.PORT || 4000;
+const username = process.env.MONGOUSERNAME;
+const password = process.env.MONGOPASSWORD;
+
 
 // Allow cross origin requests from frontend application
 app.use(cors());
@@ -38,7 +41,7 @@ app.get("/name", (req, res, next) => {
 });
 
 // connect to mongodb
-const uri = "mongodb+srv://ar2653:dz85E5ldzszsyqul@cluster0.e1j46i3.mongodb.net/?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${username}:${password}@cluster0.e1j46i3.mongodb.net/?retryWrites=true&w=majority`;
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
